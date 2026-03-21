@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .nav-item {
+    @apply px-4 py-1.5 rounded-full text-white/70 text-sm font-semibold hover:bg-white/10 hover:text-white transition duration-300;
+  }
+
+  .hero-ring {
+    @apply absolute inset-0 border-2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-[#ffffff]/5 shadow-[0_0_80px_inset] shadow-[#ffffff]/5;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply lg:max-w-5xl;
+  }
+}
+
+.neon:hover {
+  box-shadow:
+    0 0 5px #3f7efd,
+    0 0 10px #3f7efd,
+    0 0 20px #3f7efd,
+    0 0 40px #3f7efd;
+}
+
+body
+  > div
+  > section
+  > div
+  > div.flex.flex-col.md\:mt-20.mt-10.gap-20
+  > div:nth-child(1)
+  > div.lg\:grid.lg\:grid-cols-2.lg\:gap-16
+  > div.relative
+  > img {
+  width: 550px;
+  height: auto;
+  border-radius: 5px 5px 0 0;
+}
+
+.bg-section {
+  position: relative;
+  background-image: url("../../public/bg_index.png");
+  background-size: 700px;
+}
+
+.pass {
+  width: 100px !important;
+  height: 100px !important;
+}
+
+@media (min-width: 768px) {
+  body
+    > div
+    > section
+    > div
+    > div.flex.flex-col.md\:mt-20.mt-10.gap-20
+    > div:nth-child(1)
+    > div.lg\:grid.lg\:grid-cols-2.lg\:gap-16
+    > div.relative
+    > img {
+    width: 650px;
+    height: auto;
+  }
+  .pass {
+    left: 565px;
+    width: 100px !important;
+    height: 100px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .pass {
+    position: absolute;
+  }
+}
+
+@media (max-width: 1199px) {
+  .adjust-card {
+    width: 260px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .adjust-card {
+    width: 345px !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}

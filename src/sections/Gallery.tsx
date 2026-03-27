@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, MouseEvent } from "react";
+import { useState, useRef, MouseEvent, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import image1 from "@/../../public/estudio_1.jpg";
@@ -85,9 +85,10 @@ export function Gallery() {
 
         {/* 📱 VERSÃO MOBILE/TABLET: Carrossel com Parallax */}
         <div className="w-full md:hidden flex flex-col gap-4">
-          {/* Container do Carrossel */}
-          <div
+          {/* Container do Carrossel AGORA COM MOTION.DIV E LAYOUTSCROLL */}
+          <motion.div
             ref={carouselRef}
+            layoutScroll
             className="flex overflow-x-auto snap-x snap-mandatory sm:pb-14 px-6 pb-8 gap-4 w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
             {images.map((item) => (
@@ -97,7 +98,7 @@ export function Gallery() {
                 carouselRef={carouselRef}
               />
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
@@ -113,6 +114,11 @@ function MobileParallaxCard({
   carouselRef: React.RefObject<HTMLDivElement>;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Lê a rolagem do container pai (forçando o eixo X para evitar bugs em iOS)
   const { scrollXProgress } = useScroll({
@@ -130,14 +136,22 @@ function MobileParallaxCard({
       ref={cardRef}
       className="snap-center shrink-0 w-[85vw] h-[60vh] sm:w-[60vw] rounded-2xl overflow-hidden relative shadow-2xl flex justify-center items-center bg-black"
     >
-      <motion.img
-        src={item.src}
-        alt={item.alt}
-        style={{ x }}
-        // A MÁGICA: w-[150%] deixa a imagem bem larga. -left-[25%] puxa ela para a esquerda,
-        // centralizando perfeitamente a "sobra" nos dois cantos para o parallax empurrar sem vazar.
-        className="absolute top-0 -left-[25%] w-[150%] h-full object-cover max-w-none"
-      />
+      {isMounted ? (
+        <motion.img
+          src={item.src}
+          alt={item.alt}
+          style={{ x }}
+          // A MÁGICA: w-[150%] deixa a imagem bem larga. -left-[25%] puxa ela para a esquerda,
+          // centralizando perfeitamente a "sobra" nos dois cantos para o parallax empurrar sem vazar.
+          className="absolute top-0 -left-[25%] w-[150%] h-full object-cover max-w-none"
+        />
+      ) : (
+        <img
+          src={item.src}
+          alt={item.alt}
+          className="absolute top-0 -left-[25%] w-[150%] h-full object-cover max-w-none"
+        />
+      )}
     </div>
   );
 }

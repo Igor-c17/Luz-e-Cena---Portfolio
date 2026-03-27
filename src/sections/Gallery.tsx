@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { SectionHeader } from "@/components/SectionHeader";
 import image1 from "@/../../public/estudio_1.jpg";
 import image2 from "@/../../public/estudio_2.jpg";
-import image3 from "@/../../public/estudio_3.png";
+import image3 from "@/../../public/estudio_cam.png";
 import image4 from "@/../../public/estudio_4.jpg";
 import image5 from "@/../../public/estudio_5.jpg";
 import image6 from "@/../../public/estudio_6.jpg";

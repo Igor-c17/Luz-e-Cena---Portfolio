@@ -106,7 +106,7 @@ export const AboutSection = () => {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
             <Card className="h-[320px] md:col-span-2 lg:col-span-1">
               <CardHeader
-                title="Abu Diz Olá!"
+                title="Tod Diz Olá!"
                 description="Cada detalhe pensado para elevar o visual ao nível do extraordinário."
               />
               <div className="w-[480px] mx-auto mt-2 bottom-44 right-16  md:w-[350px] md:mt-0 md:right-10 md:bottom-36 lg:right-5 lg:bottom-32 relative">

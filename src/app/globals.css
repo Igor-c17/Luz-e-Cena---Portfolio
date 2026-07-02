@@ -92,3 +92,7 @@ body
 html {
   scroll-behavior: smooth;
 }
+
+.lado {
+  right: 0.1px !important;
+}

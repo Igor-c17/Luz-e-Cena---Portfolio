@@ -1,5 +1,5 @@
 export const TechIcon = ({ component }: { component: React.ElementType }) => {
-  const Component = component;
+  const Component = component as React.ComponentType<{ className?: string }>;
   return (
     <>
       <Component className="size-7 fill-[url(#tech-icon-gradient)]" />

@@ -4,6 +4,7 @@ import "./globals.css";
 import { twMerge } from "tailwind-merge";
 import Image from "next/image";
 import index from "@/../../public/bg_index.png";
+import { CustomCursor } from "@/components/CustomCursor";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const calistoga = Calistoga({
@@ -14,7 +15,7 @@ const calistoga = Calistoga({
 
 export const metadata: Metadata = {
   title: "Luz e Cena",
-  description: "Estudio Cenografico & Fotográfico",
+  description: "Estúdio Cenográfico & Fotográfico",
 };
 
 export default function RootLayout({
@@ -28,9 +29,10 @@ export default function RootLayout({
         className={twMerge(
           inter.variable,
           calistoga.variable,
-          "bg-[#0646C9] text-white antialiased font-sans ",
+          "bg-[#0646C9] text-white antialiased font-sans relative",
         )}
       >
+        <CustomCursor />
         {children}
       </body>
     </html>

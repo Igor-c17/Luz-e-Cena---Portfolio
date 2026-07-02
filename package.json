@@ -10,18 +10,22 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
     "@svgr/webpack": "^8.1.0",
     "framer-motion": "^11.3.21",
     "gsap": "^3.14.2",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
-    "tailwind-merge": "^2.4.0"
+    "tailwind-merge": "^2.4.0",
+    "three": "^0.185.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/three": "^0.185.0",
     "autoprefixer": "^10.4.27",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",

@@ -1,5 +1,7 @@
+"use client";
+
+import { useRef } from "react";
 import Image from "next/image";
-import memojiImage from "@/assets/images/memoji-computer.png";
 import ArrowDown from "@/assets/icons/arrow-down.svg";
 import grainImage from "@/assets/images/grain.jpg";
 import StarIcon from "@/assets/icons/star.svg";
@@ -10,23 +12,99 @@ import onda from "@/../../public/onda.png";
 import explore from "@/../../public/explorar.png";
 import { HeroOrbit } from "@/components/HeroOrbit";
 
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Registra o plugin do GSAP apenas no lado do cliente
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export const HeroSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+  const titleLineRefs = useRef<(HTMLSpanElement | null)[]>([]);
+
+  useGSAP(
+    () => {
+      // 1. Text Reveal das linhas do título (Créditos de filme subindo de baixo para cima)
+      gsap.from(titleLineRefs.current, {
+        yPercent: 100,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 1.4,
+        ease: "power4.out",
+        delay: 0.2,
+      });
+
+      // 2. Revelação suave da Logo, Letreiro e descrição
+      gsap.from(".hero-logo", {
+        scale: 0.8,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power3.out",
+      });
+
+      gsap.from(".hero-badge, .hero-desc, .hero-buttons", {
+        opacity: 0,
+        y: 20,
+        stagger: 0.2,
+        duration: 1.2,
+        ease: "power3.out",
+        delay: 0.6,
+      });
+
+      // 3. Zoom-out parallax do vídeo de fundo ao rolar a página
+      if (videoContainerRef.current) {
+        gsap.fromTo(
+          videoContainerRef.current,
+          { scale: 1.2, filter: "brightness(0.8)" },
+          {
+            scale: 1.0,
+            filter: "brightness(0.4)",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: true,
+            },
+          },
+        );
+      }
+    },
+    { scope: containerRef },
+  );
+
+  const titleLines = [
+    "Onde a Luz Encontra",
+    "Propósito e a",
+    "Criatividade Ganha Forma",
+  ];
+
   return (
     <div
-      className="py-32 md:py-48 lg:py-60 relative z-0 overflow-x-clip"
+      ref={containerRef}
+      className="py-32 md:py-48 lg:py-60 relative z-0 overflow-hidden min-h-screen flex items-center justify-center"
       id="home"
     >
-      <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_70%, transparent">
-        <div
-          className="absolute inset-0 -z-30 opacity-5"
-          style={{
-            backgroundImage: `url(${grainImage.src})`,
-          }}
-        ></div>
+      {/* 🎥 Vídeo de Fundo em Looping com Zoom Parallax */}
+
+      {/* Textura de Granulado Cinematográfico */}
+      <div
+        className="absolute inset-0 -z-20 opacity-5 pointer-events-none"
+        style={{
+          backgroundImage: `url(${grainImage.src})`,
+        }}
+      ></div>
+
+      {/* Elementos Estelares Orbitantes do Design Original (Sob o Overlay) */}
+      <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_70%,transparent)] opacity-40 pointer-events-none -z-10">
         <div className="size-[620px] hero-ring"></div>
         <div className="size-[820px] hero-ring"></div>
         <div className="size-[1020px] hero-ring"></div>
         <div className="size-[1220px] hero-ring"></div>
+
         <HeroOrbit
           size={430}
           rotation={-14}
@@ -75,7 +153,7 @@ export const HeroSection = () => {
           shouldSpin
           spinDuration="6s"
         >
-          <StarIcon className="size12 text-[#2ECC71]" />
+          <StarIcon className="size-12 text-[#2ECC71]/40" />
         </HeroOrbit>
         <HeroOrbit
           size={590}
@@ -85,7 +163,7 @@ export const HeroSection = () => {
           shouldSpin
           spinDuration="6s"
         >
-          <StarIcon className="size-8 text-[#2ECC71]" />
+          <StarIcon className="size-8 text-[#2ECC71]/40" />
         </HeroOrbit>
         <HeroOrbit
           size={650}
@@ -125,65 +203,95 @@ export const HeroSection = () => {
           shouldSpin
           spinDuration="6s"
         >
-          <StarIcon className="size-28 text-[#2ECC71]" />
+          <StarIcon className="size-28 text-[#2ECC71]/20" />
         </HeroOrbit>
       </div>
-      <div className="container">
+
+      <div className="container relative z-10 text-center">
         <div className="flex flex-col items-center">
-          <Image
-            src={logo}
-            className="size-[180px] top-40 md:top-56 lg:top-[270px] absolute pointer-events-none z-0"
-            alt="Person peeking from behind laptop"
-          />
-          <Image
-            src={letreiro}
-            className="size-[250px] top-24 relative pointer-events-none z-0"
-            alt="Person peeking from behind laptop"
-          />
-          <div className="bg-[#0a3996]/70 border border-[#0850e0] px-4 py-1.5 inline-flex items-center gap-4 rounded-lg z-10">
+          <div className="relative w-full h-[240px] flex items-center justify-center">
+            <Image
+              src={logo}
+              className="size-[150px] md:size-[180px] absolute pointer-events-none z-0 hero-logo"
+              alt="Estúdio Luz e Cena Logo"
+              priority
+            />
+            <Image
+              src={letreiro}
+              className="size-[200px] md:size-[250px] absolute top-[80px] pointer-events-none z-0 hero-logo"
+              alt="Letreiro Luz e Cena"
+              priority
+            />
+          </div>
+
+          <div className="bg-[#0a3996]/70 border border-[#0850e0] px-4 py-1.5 inline-flex items-center gap-4 rounded-lg z-10 hero-badge mt-4">
             <div className="bg-green-500 size-2.5 rounded-full relative">
               <div className="bg-green-500 absolute inset-0 rounded-full animate-ping-large"></div>
             </div>
-            <div className="text-sm font-medium">
+            <div className="text-sm font-medium text-white">
               Disponível Para Novos Projetos
             </div>
           </div>
         </div>
-        <div className="max-w-lg mx-auto">
-          <h1 className="font-serif text-3xl md:text-5xl text-center mt-8 tracking-wide sm:text-5xl ">
-            Onde a Luz Encontra Propósito e a Criatividade Ganha Forma
+
+        <div className="max-w-3xl mx-auto mt-6">
+          {/* GSAP Text Reveal Title */}
+          <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl text-center tracking-wide leading-tight mt-6">
+            {titleLines.map((line, idx) => (
+              <span
+                key={idx}
+                className="block overflow-hidden h-[1.2em] relative"
+              >
+                <span
+                  ref={(el) => {
+                    titleLineRefs.current[idx] = el;
+                  }}
+                  className="inline-block origin-bottom-left select-none text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/70"
+                >
+                  {line}
+                </span>
+              </span>
+            ))}
           </h1>
-          <div className="relative inline-block">
-            <p className="mt-7 text-center text-white/80 md:text-lg  sm:text-xl p_shine">
+
+          <div className="relative inline-block hero-desc max-w-xl mx-auto">
+            <p className="mt-7 text-center text-white/80 text-base md:text-lg p_shine leading-relaxed">
               O Luz e Cena habita o universo da expressão visual autêntica, da
               criatividade sem limites e da sofisticação acessível. Suas
               fronteiras são a vulgaridade, a padronização e a pressa que mata a
               alma criativa. Seus símbolos são a luz natural que abraça, os
               cenários que se transformam, a escuta atenta e os sorrisos
-              genuínos que florescem quando a visão se torna realidade tangível.
+              genuínos que florescem.
             </p>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row justify-center items-center mt-8 gap-4 neon">
-          <button className="inline-flex items-center gap-2 border border-[#fff]/50 px-6 h-12 rounded-xl neon">
-            <Image
-              src={explore}
-              className="size-4 relative left-0.5 pointer-events-none z-0 opacity-70"
-              alt="Person peeking from behind laptop"
-            />
-            <span className="font-semibold">Explore o Estúdio</span>
-            <ArrowDown className="size-4 " />
-          </button>
-          <button className="inline-flex items-center gap-2 border border-[#fff]/50 bg-[#0a3996] text-white-900 h-12 px-6 rounded-xl">
-            <span>
+
+        <div className="flex flex-col md:flex-row justify-center items-center mt-10 gap-4 hero-buttons">
+          <a href="#studio-tour" className="w-full md:w-auto">
+            <button className="inline-flex items-center justify-center gap-2 border border-white/30 hover:border-[#2ECC71] bg-black/40 hover:bg-black/60 px-6 h-12 rounded-xl neon transition-all duration-300 w-full">
               <Image
-                src={onda}
-                className="size-5 pointer-events-none z-0"
-                alt="Person peeking from behind laptop"
+                src={explore}
+                className="size-4 relative pointer-events-none z-0 opacity-70"
+                alt="Explorar Ícone"
               />
-            </span>
-            <span className="font-semibold">Vamos Conversar!</span>
-          </button>
+              <span className="font-semibold text-white">
+                Explore o Estúdio
+              </span>
+              <ArrowDown className="size-4 text-white" />
+            </button>
+          </a>
+          <a href="#contact" className="w-full md:w-auto">
+            <button className="inline-flex items-center justify-center gap-2 border border-white/20 bg-[#0a3996] hover:bg-[#0850e0] text-white h-12 px-6 rounded-xl transition-all duration-300 w-full shadow-lg shadow-[#0a3996]/50">
+              <span>
+                <Image
+                  src={onda}
+                  className="size-5 pointer-events-none z-0"
+                  alt="Onda Ícone"
+                />
+              </span>
+              <span className="font-semibold">Vamos Conversar!</span>
+            </button>
+          </a>
         </div>
       </div>
     </div>

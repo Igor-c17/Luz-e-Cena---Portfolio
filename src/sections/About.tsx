@@ -159,7 +159,7 @@ export const AboutSection = () => {
               </div>
             </Card>
             <a
-              href="https://www.google.com/maps?q=Rua+Antonio+Martins,+603+-+Rodolfo+Teófilo,+Fortaleza+-+CE,+60430-025"
+              href="https://maps.app.goo.gl/BjthTtAsp5UpRrww6"
               target="_blank"
               rel="noopener noreferrer"
             >

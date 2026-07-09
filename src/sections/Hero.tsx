@@ -113,7 +113,7 @@ export const HeroSection = () => {
           shouldSpin
           spinDuration="3s"
         >
-          <SparkleIcon className="size-8 text-[#2ECC71]/20" />
+          <SparkleIcon className="size-8 text-[#0646C9]/60" />
         </HeroOrbit>
         <HeroOrbit
           size={440}
@@ -123,7 +123,7 @@ export const HeroSection = () => {
           shouldSpin
           spinDuration="3s"
         >
-          <SparkleIcon className="size-5 text-[#2ECC71]/20" />
+          <SparkleIcon className="size-5 text-[#0646C9]/60" />
         </HeroOrbit>
         <HeroOrbit
           size={520}
@@ -133,7 +133,7 @@ export const HeroSection = () => {
           shouldSpin
           spinDuration="3s"
         >
-          <div className="size-2 rounded-full bg-[#2ECC71]/20" />
+          <div className="size-2 rounded-full bg-[#0646C9]/60" />
         </HeroOrbit>
         <HeroOrbit
           size={530}
@@ -143,7 +143,7 @@ export const HeroSection = () => {
           shouldSpin
           spinDuration="3s"
         >
-          <SparkleIcon className="size-10 text-[#2ECC71]/20" />
+          <SparkleIcon className="size-10 text-[#0646C9]/60" />
         </HeroOrbit>
         <HeroOrbit
           size={550}
@@ -153,7 +153,7 @@ export const HeroSection = () => {
           shouldSpin
           spinDuration="6s"
         >
-          <StarIcon className="size-12 text-[#2ECC71]/40" />
+          <StarIcon className="size-12 text-[#0646C9]/60" />
         </HeroOrbit>
         <HeroOrbit
           size={590}
@@ -163,7 +163,7 @@ export const HeroSection = () => {
           shouldSpin
           spinDuration="6s"
         >
-          <StarIcon className="size-8 text-[#2ECC71]/40" />
+          <StarIcon className="size-8 text-[#0646C9]/60" />
         </HeroOrbit>
         <HeroOrbit
           size={650}
@@ -173,7 +173,7 @@ export const HeroSection = () => {
           shouldSpin
           spinDuration="3s"
         >
-          <div className="size-2 rounded-full bg-[#2ECC71]/20" />
+          <div className="size-2 rounded-full bg-[#0646C9]/60" />
         </HeroOrbit>
         <HeroOrbit
           size={710}
@@ -183,7 +183,7 @@ export const HeroSection = () => {
           shouldSpin
           spinDuration="6s"
         >
-          <SparkleIcon className="size-14 text-[#2ECC71]/20" />
+          <SparkleIcon className="size-14 text-[#0646C9]/60" />
         </HeroOrbit>
         <HeroOrbit
           size={720}
@@ -193,7 +193,7 @@ export const HeroSection = () => {
           shouldSpin
           spinDuration="6s"
         >
-          <div className="size-3 rounded-full bg-[#2ECC71]/20" />
+          <div className="size-3 rounded-full bg-[#0646C9]/60" />
         </HeroOrbit>
         <HeroOrbit
           size={800}
@@ -203,7 +203,7 @@ export const HeroSection = () => {
           shouldSpin
           spinDuration="6s"
         >
-          <StarIcon className="size-28 text-[#2ECC71]/20" />
+          <StarIcon className="size-28 text-[#0646C9]/60" />
         </HeroOrbit>
       </div>
 
@@ -212,19 +212,19 @@ export const HeroSection = () => {
           <div className="relative w-full h-[240px] flex items-center justify-center">
             <Image
               src={logo}
-              className="size-[150px] md:size-[180px] absolute pointer-events-none z-0 hero-logo"
+              className="size-[150px] md:size-[160px] absolute pointer-events-none z-0 hero-loger hero-logo"
               alt="Estúdio Luz e Cena Logo"
               priority
             />
             <Image
               src={letreiro}
-              className="size-[200px] md:size-[250px] absolute top-[80px] pointer-events-none z-0 hero-logo"
+              className="size-[200px] md:size-[250px] absolute top-[90px] pointer-events-none z-0 hero-letreiro hero-logo"
               alt="Letreiro Luz e Cena"
               priority
             />
           </div>
 
-          <div className="bg-[#0a3996]/70 border border-[#0850e0] px-4 py-1.5 inline-flex items-center gap-4 rounded-lg z-10 hero-badge mt-4">
+          <div className="bg-[#0a3996]/40 border border-[#0850e0]/80 px-4 py-1.5 inline-flex items-center gap-4 rounded-lg z-10 hero-badge mt-4">
             <div className="bg-green-500 size-2.5 rounded-full relative">
               <div className="bg-green-500 absolute inset-0 rounded-full animate-ping-large"></div>
             </div>
@@ -246,7 +246,7 @@ export const HeroSection = () => {
                   ref={(el) => {
                     titleLineRefs.current[idx] = el;
                   }}
-                  className="inline-block origin-bottom-left select-none text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/70"
+                  className="inline-block origin-bottom-left select-none text-transparent bg-clip-text bg-gradient-to-r from-[#0646C9] via-[#0646C9] to-[#0646C9]/70"
                 >
                   {line}
                 </span>
@@ -255,7 +255,7 @@ export const HeroSection = () => {
           </h1>
 
           <div className="relative inline-block hero-desc max-w-xl mx-auto">
-            <p className="mt-7 text-center text-white/80 text-base md:text-lg p_shine leading-relaxed">
+            <p className="mt-7 text-center text-[#0646C9]/80 text-base md:text-lg p_shine leading-relaxed">
               O Luz e Cena habita o universo da expressão visual autêntica, da
               criatividade sem limites e da sofisticação acessível. Suas
               fronteiras são a vulgaridade, a padronização e a pressa que mata a
@@ -268,7 +268,7 @@ export const HeroSection = () => {
 
         <div className="flex flex-col md:flex-row justify-center items-center mt-10 gap-4 hero-buttons">
           <a href="#studio-tour" className="w-full md:w-auto">
-            <button className="inline-flex items-center justify-center gap-2 border border-white/30 hover:border-[#2ECC71] bg-black/40 hover:bg-black/60 px-6 h-12 rounded-xl neon transition-all duration-300 w-full">
+            <button className="inline-flex items-center justify-center gap-2 border border-[#0646C9]/30 hover:border-[#0646C9] bg-black/40 hover:bg-black/60 px-6 h-12 rounded-xl neon transition-all duration-300 w-full">
               <Image
                 src={explore}
                 className="size-4 relative pointer-events-none z-0 opacity-70"

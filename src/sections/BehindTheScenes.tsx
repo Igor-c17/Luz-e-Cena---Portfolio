@@ -14,18 +14,25 @@ export const BehindTheScenesSection = () => {
   return (
     <section
       id="behind-the-scenes"
-      className="py-20 md:py-28 bg-[#0646C9]/20 relative overflow-hidden"
+      className="py-20 md:py-28 bg-[#0646C9] relative overflow-hidden"
       style={{
         backgroundImage: `url(${index.src})`,
         backgroundSize: "700px",
       }}
     >
       <div className="container mx-auto px-4">
-        <SectionHeader
-          eyebrow="A Mágica da Cor"
-          title="Colorização Cinematográfica"
-          description="Veja a diferença entre a captura bruta do set (RAW) e a finalização com nosso Cinematic Color Grading profissional."
-        />
+        <div className="flex justify-center">
+          <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-[#7CA3F6] to-[#EAEFF8] text-transparent bg-clip-text text-center">
+            A Mágica da Cor
+          </p>
+        </div>
+        <h2 className="font-serif text-3xl text-center mt-6">
+          Colorização Cinematográfica
+        </h2>
+        <p className="  text-xl text-center text-white/60 md:text-lg lg:text-xl mt-4 max-w-md mx-auto">
+          Veja a diferença entre a captura bruta do set (RAW) e a finalização
+          com nosso Cinematic Color Grading profissional.
+        </p>
 
         <div className="mt-12 md:mt-20 flex justify-center items-center">
           <div className="relative w-full max-w-4xl h-[300px] sm:h-[450px] md:h-[550px] rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-black">

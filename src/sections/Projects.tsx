@@ -30,19 +30,27 @@ const portfolioProjects = [
 export const ProjectsSection = () => {
   return (
     <section
-      className="pb-16 sm:py-20 md:py-20 lg:py-24 bg-section overflow-hidden"
+      className="bg-[#0646C9] pb-16 sm:py-20 md:py-20 lg:py-24 bg-section overflow-hidden pt-10"
       id="studio"
       style={{
         backgroundImage: `url(${index.src})`,
         backgroundSize: "700px",
       }}
     >
-      <div className="container mx-auto px-4">
-        <SectionHeader
-          eyebrow="Resultados reais"
-          title="Por Que Escolher a Luz e Cena?"
-          description="Unimos criatividade, tecnologia e experiência para transformar ideias em experiências únicas, com qualidade, inovação e atenção a cada detalhe."
-        />
+      <div className="container mx-auto px-4 ">
+        <div className="flex justify-center">
+          <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-[#7CA3F6] to-[#EAEFF8] text-transparent bg-clip-text text-center">
+            Resultados reais
+          </p>
+        </div>
+        <h2 className="font-serif text-3xl text-center mt-6">
+          Por Que Escolher a Luz e Cena?
+        </h2>
+        <p className="  text-xl text-center text-white/60 md:text-lg lg:text-xl mt-4 max-w-md mx-auto">
+          Unimos criatividade, tecnologia e experiência para transformar ideias
+          em experiências únicas, com qualidade, inovação e atenção a cada
+          detalhe.
+        </p>
 
         <div className="flex flex-col md:mt-20 mt-10 gap-20">
           {portfolioProjects.map((project, projectIndex) => (
@@ -63,7 +71,7 @@ export const ProjectsSection = () => {
 
               <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
                 <div className="lg:pb-8">
-                  <div className="bg-gradient-to-r from-[#2ECC71] to-[#3f7efd] inline-flex gap-2 font-bold uppercase tracking-widest text-sm text-transparent bg-clip-text">
+                  <div className="bg-gradient-to-r from-[#7CA3F6] to-[#EAEFF8] inline-flex gap-2 font-bold uppercase tracking-widest text-sm text-transparent bg-clip-text">
                     <span>{project.company}</span>
                   </div>
                   <h3 className="font-serif text-2xl mt-2 md:mt-5 md:text-4xl leading-tight">
@@ -76,7 +84,7 @@ export const ProjectsSection = () => {
                         key={result.title}
                         className="flex gap-3 text-sm md:text-base text-white/70"
                       >
-                        <CheckCircleIcon className="size-5 md:size-6 text-[#2ECC71] shrink-0" />
+                        <CheckCircleIcon className="size-5 md:size-6 text-[#467ff3] shrink-0" />
                         <span>{result.title}</span>
                       </li>
                     ))}

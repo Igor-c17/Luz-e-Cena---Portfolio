@@ -44,13 +44,23 @@ const testimonials = [
 
 export const TestimonialsSection = () => {
   return (
-    <div className="py-16 lg:py-24 bg-section">
+    <div className="py-16 lg:py-24 bg-section bg-[#0646C9]">
       <div className="container">
-        <SectionHeader
-          eyebrow="Os Fundamentos da Nossa Cena"
-          title="Os Pilares que Sustentam Cada Produção da Luz e Cena"
-          description="Da liberdade criativa à excelência técnica, nossos pilares definem a forma como cada projeto é concebido, produzido e entregue — garantindo experiências visuais marcantes, autênticas e cinematográficas em cada detalhe."
-        />
+        <div className="flex justify-center">
+          <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-[#7CA3F6] to-[#EAEFF8] text-transparent bg-clip-text text-center">
+            Os Fundamentos da Nossa Cena
+          </p>
+        </div>
+        <h2 className="font-serif text-3xl text-center mt-6">
+          Os Pilares que Sustentam Cada Produção da Luz e Cena
+        </h2>
+        <p className="  text-xl text-center text-white/60 md:text-lg lg:text-xl mt-4 max-w-md mx-auto">
+          Da liberdade criativa à excelência técnica, nossos pilares definem a
+          forma como cada projeto é concebido, produzido e entregue — garantindo
+          experiências visuais marcantes, autênticas e cinematográficas em cada
+          detalhe.
+        </p>
+        <SectionHeader eyebrow="" title="" description="" />
         <div className="mt-16 lg:mt-20 flex overflow-x-clip [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] py-4 -my-4">
           <div className="flex gap-8 pr-8 flex-none animate-move-left [animation-duration:90s] hover:[animation-play-state:paused]">
             {[...new Array(2)].fill(0).map((_, index) => (

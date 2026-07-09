@@ -29,7 +29,7 @@ export default function RootLayout({
         className={twMerge(
           inter.variable,
           calistoga.variable,
-          "bg-[#0646C9] text-white antialiased font-sans relative",
+          "bg-[#EAEFF8] text-white antialiased font-sans relative",
         )}
       >
         <CustomCursor />

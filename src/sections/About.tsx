@@ -97,11 +97,19 @@ export const AboutSection = () => {
   return (
     <div className="py-20 lg:py-28 bg-section" id="about">
       <div className="container">
-        <SectionHeader
-          eyebrow="Sobre a Luz & Cena"
-          title="Mais Que Um Estúdio"
-          description="Uma experiência visual que une estrutura profissional e sensibilidade criativa."
-        />
+        <div className="flex justify-center">
+          <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-[#7CA3F6] to-[#0646C9] text-transparent bg-clip-text text-center">
+            Sobre o Luz & Cena
+          </p>
+        </div>
+        <h2 className="font-serif text-3xl text-center mt-6 text-[#0646C9]">
+          Mais Que Um Estúdio
+        </h2>
+        <p className="  text-xl text-center text-[#0646C9]/60 md:text-lg lg:text-xl mt-4 max-w-md mx-auto">
+          Uma experiência visual que une estrutura profissional e sensibilidade
+          criativa.
+        </p>
+
         <div className="mt-20 flex flex-col gap-8 ">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
             <Card className="h-[320px] md:col-span-2 lg:col-span-1">
